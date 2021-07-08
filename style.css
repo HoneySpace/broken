@@ -1,0 +1,79 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  display: grid;
+  place-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+canvas {
+  display: block;
+}
+
+.text-container {
+  color: white;
+  font-family: "Cutive Mono", monospace;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  font-size: 2rem;
+  text-transform: uppercase;
+
+  --r: 255;
+  --g: 255;
+  --b: 255;
+
+  --normal: rgba(var(--r), greenvar(--g), var(--b), 1);
+  --glow: 0px 0px 1.8rem currentColor, 0px 0px 0.5rem currentColor;
+  --broken: rgba(var(--r), var(--g), var(--b), 0.225);
+}
+
+.broken-container {
+  display: flex;
+}
+
+p {
+  margin: 0;
+}
+
+.letter {
+  --animTime: 2s;
+  color: var(--normal);
+  text-shadow: var(--glow);
+}
+
+.letter:not(.broken) {
+  animation: blink var(--animTime) ease-in-out infinite;
+}
+
+@keyframes blink {
+  0% {
+    color: var(--normal);
+    text-shadow: var(--glow);
+  }
+  94% {
+    color: var(--normal);
+    text-shadow: var(--glow);
+  }
+  95% {
+    color: var(--broken);
+    text-shadow: none;
+  }
+  97% {
+    color: var(--broken);
+    text-shadow: none;
+  }
+  100% {
+    color: var(--normal);
+    text-shadow: var(--glow);
+  }
+}
+
+.letter.broken {
+  text-shadow: none;
+  color: var(--broken);
+}
